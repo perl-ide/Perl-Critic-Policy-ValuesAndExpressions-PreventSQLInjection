@@ -392,6 +392,45 @@ my $sql = "select $var from " . method( $table ) . " where $where"; ## SQL safe 
 
 my $sql = "select * from " . Acme::XYZ::method($table);
 
+## name Anonymous functions without arguments
+## failures 0
+## TODO This functionality is missing
+## cut
+
+my $sql = "select from " . $x->(); ## SQL safe ($x)
+
+## name Anonymous functions with arguments
+## failures 0
+## TODO This functionality is missing
+## cut
+
+my $sql = "select from " . $x->( $y ); ## SQL safe ($x)
+
+## name Anonymous functions without arguments - another syntax
+## failures 0
+## cut
+
+my $sql = "select from " . &$x; ## SQL safe ($x)
+
+## name Anonymous functions with arguments - another syntax
+## failures 0
+## cut
+
+my $sql = "select from " . &$x($y); ## SQL safe ($x)
+
+## name Functions returning anonymous functions without SQL safe
+## failures 1
+## TODO This functionality is missing
+## cut
+
+my $sql = "select from " . iterator->();
+
+## name Functions returning anonymous functions with SQL safe
+## failures 0
+## cut
+
+my $sql = "select from " . iterator->(); ## SQL safe (&iterator)
+
 ## name Prohibit all quoting methods.
 ## parms { quoting_methods => '' }
 ## failures 1
