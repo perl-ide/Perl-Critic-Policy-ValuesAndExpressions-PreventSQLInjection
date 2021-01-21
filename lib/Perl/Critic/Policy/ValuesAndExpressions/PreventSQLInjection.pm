@@ -6,13 +6,11 @@ use warnings;
 
 use base 'Perl::Critic::Policy';
 
-use Carp;
-use Data::Dumper;
-use Perl::Critic::Utils;
-use Readonly;
-use String::InterpolatedVariables;
-use Try::Tiny;
-
+use Carp qw( croak );
+use Perl::Critic::Utils qw( $TRUE );
+use Readonly ();
+use String::InterpolatedVariables ();
+use Try::Tiny qw( catch try );
 
 =head1 NAME
 
