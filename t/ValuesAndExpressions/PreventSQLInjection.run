@@ -412,3 +412,52 @@ $sql = "UPDATE table_name SET field = " . $dbh->test($value) . "WHERE field = 1"
 ## cut
 
 $sql = "UPDATE table_name SET field = " . $dbh->test($value) . "WHERE field = " . $dbh->quote($value2);
+
+
+## name vars in subtest name.
+## parms { prefer_upper_case_keywords => 0 }
+## failures 1
+## cut
+for my $id ( 10, 2010 ) {
+    subtest "update $id in test" => sub {
+    };
+}
+
+## name vars in subtest name.
+## parms { prefer_upper_case_keywords => 1 }
+## failures 0
+## cut
+for my $id ( 10, 2010 ) {
+    subtest "update $id in test" => sub {
+    };
+}
+
+## name Heredoc with SQL marker and upper case detection.
+## parms { prefer_upper_case_keywords => 1 }
+## failures 1
+## cut
+
+my $heredoc = <<SQL
+	select $field_name
+	FROM $table
+SQL
+
+## name Double quoted heredoc with SQL marker and upper case detection.
+## parms { prefer_upper_case_keywords => 1 }
+## failures 1
+## cut
+
+my $heredoc = <<"SQL"
+	select $field_name
+	FROM $table
+SQL
+
+## name Single quoted heredoc with SQL marker and upper case detection.
+## parms { prefer_upper_case_keywords => 1 }
+## failures 0
+## cut
+
+my $heredoc = <<'SQL'
+	select $field_name
+	FROM $table
+SQL

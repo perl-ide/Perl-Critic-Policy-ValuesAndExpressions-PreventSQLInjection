@@ -84,6 +84,17 @@ C<.perlcriticrc>:
 
 By default, no functions are considered safe.
 
+=head2 prefer_upper_case_keywords
+
+A boolean indicating whether you'd prefer to detect only SELECT, INSERT, UPDATE
+and DELETE or also their lower and mixed case variants. This setting will be
+ignored if we find a heredoc with the C<SQL> marker. Use this judiciously, but
+it can help to prevent false positives like C<"update account_id in test">.
+
+Defaults to 0.
+
+    [ValuesAndExpressions::PreventSQLInjection]
+    prefer_upper_case_keywords = 1
 
 =head1 MARKING ELEMENTS AS SAFE
 
@@ -273,6 +284,12 @@ sub supported_parameters {
             default_string => $SAFE_CONTEXT_DEFAULT,
             behavior       => 'string',
         },
+        {
+            name => 'prefer_upper_case_keywords',
+            description => 'Match on SELECT, UPDATE, INSERT, DELETE but not on their lower or mixed case variants',
+            default_string => '0',
+            behavior       => 'boolean',
+        },
     );
 }
 
@@ -350,7 +367,7 @@ sub violates {
     # Make sure the first string looks like a SQL statement before investigating
     # further.
     return ()
-        if !is_sql_statement($element);
+        if !$self->is_sql_statement($element);
 
     # Skip this statement if we are in a safe context (e.g., die "string")
     return ()
@@ -596,17 +613,26 @@ sub get_complete_variable {
 
 Return a boolean indicating whether a string is potentially the beginning of a SQL statement.
 
-    my $is_sql_statement = is_sql_statement( $token );
+    my $is_sql_statement = $self->is_sql_statement( $token );
 
 =cut
 
 sub is_sql_statement {
-    my ($token) = @_;
+    my ($self,$token) = @_;
+
+    my $probably_sql = 0;
+    if ( $token->isa('PPI::Token::HereDoc')
+        && ( $token eq q{<<"SQL"} || $token eq q{<<SQL} ) ) {
+        $probably_sql = 1;
+    }
+
     my $content = get_token_content($token);
 
-    return $content =~ /^ \s* (?: SELECT | INSERT | UPDATE | DELETE ) \b/six
-        ? 1
-        : 0;
+    if ( !$probably_sql && $self->{_prefer_upper_case_keywords} ) {
+        return $content =~ m{^ \s* (?: SELECT | INSERT | UPDATE | DELETE ) \b}sx;
+    }
+
+    return $content =~ m{^ \s* (?: SELECT | INSERT | UPDATE | DELETE ) \b}six;
 }
 
 =head2 is_in_safe_context()
