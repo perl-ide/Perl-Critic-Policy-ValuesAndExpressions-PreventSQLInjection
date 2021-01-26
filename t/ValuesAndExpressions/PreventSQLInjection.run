@@ -461,3 +461,12 @@ my $heredoc = <<'SQL'
 	select $field_name
 	FROM $table
 SQL
+
+## name Heredoc with bracketed variable.
+## failures 0
+## cut
+
+my $heredoc = <<SQL ## SQL safe ($field_name)
+	SELECT ${field_name}
+	FROM table
+SQL

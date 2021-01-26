@@ -724,8 +724,20 @@ sub analyze_string_injections {
         );
 
         # Find all the variables that appear in the string.
-        my $unsafe_variables = [ grep { !$safe_elements->{$_} }
-                @{ String::InterpolatedVariables::extract($content) } ];
+        my @variables = @{ String::InterpolatedVariables::extract($content) };
+
+        # Turn ${foo}, @{foo} and %{foo} into $foo, @foo and %foo.
+        my @vars;
+        for my $var (@variables) {
+            if ( $var =~ m/^(\$|@|%)\{(\w+)\}$/ ) {
+                $var = $1 . $2;
+            }
+            push @vars, $var;
+        }
+
+        # Find all the variables that appear in the string.
+        my $unsafe_variables = [ grep { !$safe_elements->{$_} } @vars ];
+
 
         # Based on the token type, determine if it is interpolated and report any
         # unsafe variables.
