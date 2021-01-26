@@ -669,21 +669,16 @@ sub get_token_content {
     my ($token) = @_;
 
     # Retrieve the string's content.
-    my $content;
     if ( $token->isa('PPI::Token::HereDoc') ) {
-        my @heredoc = $token->heredoc();
-        $content = join( '', @heredoc );
+        return join( '', $token->heredoc );
     }
     elsif ( $token->isa('PPI::Token::Quote') ) {
 
         # ->string() strips off the leading and trailing quotation signs.
-        $content = $token->string();
-    }
-    else {
-        $content = $token->content();
+        return $token->string();
     }
 
-    return $content;
+    return $token->content();
 }
 
 =head2 analyze_string_injections()
