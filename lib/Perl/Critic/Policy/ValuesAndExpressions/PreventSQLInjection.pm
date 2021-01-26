@@ -8,6 +8,7 @@ use base 'Perl::Critic::Policy';
 
 use Carp qw( croak );
 use Perl::Critic::Utils qw( $TRUE );
+use PPIx::QuoteLike               ();
 use Readonly                      ();
 use String::InterpolatedVariables ();
 use Try::Tiny qw( catch try );
@@ -750,13 +751,8 @@ sub analyze_string_injections {
                 if scalar(@$unsafe_variables) != 0;
         }
         elsif ($is_heredoc) {
-
-            # Single quoted heredocs are not interpolated, so they're safe.
-            # Note: '_mode' doesn't seem to be publicly accessible, and the tokenizer
-            #       destroys the part of the heredoc termination marker that would
-            #       allow determining whether it's interpolated, so the only option
-            #       is to rely on the private property of the token here.
-            return if $token->{'_mode'} ne 'interpolate';
+            my $str = PPIx::QuoteLike->new($token);
+            return unless $str->interpolates;
 
             return $unsafe_variables
                 if scalar(@$unsafe_variables) != 0;
