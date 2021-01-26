@@ -956,3 +956,5 @@ PARTICULAR PURPOSE. See the LICENSE file for more details.
 =cut
 
 1;
+
+# ABSTRACT: Prevent SQL injection in interpolated strings.
