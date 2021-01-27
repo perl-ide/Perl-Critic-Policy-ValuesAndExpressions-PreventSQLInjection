@@ -286,8 +286,9 @@ sub supported_parameters {
             behavior       => 'string',
         },
         {
-            name => 'prefer_upper_case_keywords',
-            description => 'Match on SELECT, UPDATE, INSERT, DELETE but not on their lower or mixed case variants',
+            name        => 'prefer_upper_case_keywords',
+            description =>
+                'Match on SELECT, UPDATE, INSERT, DELETE but not on their lower or mixed case variants',
             default_string => '0',
             behavior       => 'boolean',
         },
@@ -619,7 +620,7 @@ Return a boolean indicating whether a string is potentially the beginning of a S
 =cut
 
 sub is_sql_statement {
-    my ($self,$token) = @_;
+    my ( $self, $token ) = @_;
 
     my $probably_sql = 0;
     if ( $token->isa('PPI::Token::HereDoc')
@@ -630,7 +631,8 @@ sub is_sql_statement {
     my $content = get_token_content($token);
 
     if ( !$probably_sql && $self->{_prefer_upper_case_keywords} ) {
-        return $content =~ m{^ \s* (?: SELECT | INSERT | UPDATE | DELETE ) \b}sx;
+        return $content
+            =~ m{^ \s* (?: SELECT | INSERT | UPDATE | DELETE ) \b}sx;
     }
 
     return $content =~ m{^ \s* (?: SELECT | INSERT | UPDATE | DELETE ) \b}six;
@@ -737,7 +739,6 @@ sub analyze_string_injections {
 
         # Find all the variables that appear in the string.
         my $unsafe_variables = [ grep { !$safe_elements->{$_} } @vars ];
-
 
         # Based on the token type, determine if it is interpolated and report any
         # unsafe variables.

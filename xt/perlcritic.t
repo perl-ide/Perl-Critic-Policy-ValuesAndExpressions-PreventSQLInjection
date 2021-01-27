@@ -5,14 +5,10 @@ use warnings;
 
 use Test::More;
 
-
 # Load Test::Perl::Critic.
-eval
-{
-	require Test::Perl::Critic;
-};
+eval { require Test::Perl::Critic; };
 plan( skip_all => 'Test::Perl::Critic required.' )
-	if $@;
+    if $@;
 
 # Run PerlCritic.
 Test::Perl::Critic->import( -profile => '.perlcriticrc' );
