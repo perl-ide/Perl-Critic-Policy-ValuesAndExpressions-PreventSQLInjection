@@ -407,6 +407,7 @@ sub detect_sql_injections {
     my $sql_injections = [];
     my $token          = $element;
     while ( defined($token) && $token ne '' ) {
+        ## no critic (ControlStructures::ProhibitCascadingIfElse)
 
         # If the token is a string, we need to analyze it for interpolated
         # variables.
