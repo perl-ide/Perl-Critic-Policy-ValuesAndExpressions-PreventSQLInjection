@@ -342,7 +342,7 @@ Sets up policy ($self) for each new document before scanning.
 =cut
 
 sub prepare_to_scan_document {
-    my ( $self, $doc ) = @_;
+    my $self = shift;
     delete $self->{'_sqlsafe'};
     return $TRUE;
 }
