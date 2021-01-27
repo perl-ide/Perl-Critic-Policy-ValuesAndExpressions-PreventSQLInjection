@@ -1,2 +1,8 @@
+blib
+.build/
+Build
+_build
 /cover_db/
+MYMETA.*
+Perl-Critic-Policy-ValuesAndExpressions-PreventSQLInjection*
 .tidyall.d
