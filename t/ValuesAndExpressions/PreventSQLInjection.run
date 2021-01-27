@@ -495,3 +495,13 @@ DELETE FROM $table
 my $sql = "
 DROP table $table
 ";
+
+## name Double-quoted SQL string with CREATE statement.
+## failures 1
+## cut
+
+my $sql = "
+CREATE table $table (
+    person_id int
+)
+";
