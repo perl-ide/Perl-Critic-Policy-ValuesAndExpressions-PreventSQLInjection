@@ -296,7 +296,7 @@ sub supported_parameters {
 
 =head2 default_severity()
 
-Return the default severify for this policy.
+Return the default severity for this policy.
 
     my $default_severity = $policy->default_severity();
 
