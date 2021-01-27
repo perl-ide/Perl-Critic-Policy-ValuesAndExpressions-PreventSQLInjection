@@ -487,3 +487,11 @@ ADD $column varchar(255);
 my $sql = "
 DELETE FROM $table
 ";
+
+## name Double-quoted SQL string with DROP statement.
+## failures 1
+## cut
+
+my $sql = "
+DROP table $table
+";
