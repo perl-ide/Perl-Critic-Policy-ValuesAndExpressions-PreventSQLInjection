@@ -10,11 +10,7 @@ use strict;
 use warnings;
 
 use Test::More;
-
-# Load module.
-eval { require Test::Mojibake; };
-plan( skip_all => 'Test::Mojibake required for source encoding testing' )
-    if $@;
+use Test::Needs qw( Test::Mojibake );
 
 # Test encoding for all files.
 Test::Mojibake::all_files_encoding_ok();
