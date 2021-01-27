@@ -20,11 +20,11 @@ Perl::Critic::Policy::ValuesAndExpressions::PreventSQLInjection - Prevent SQL in
 
 =head1 VERSION
 
-Version 1.4.0_1
+Version 1.4.0
 
 =cut
 
-our $VERSION = '1.4.0_1';
+our $VERSION = 'v1.4.0';
 
 =head1 AFFILIATION
 
