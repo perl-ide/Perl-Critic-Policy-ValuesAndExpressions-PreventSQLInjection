@@ -633,10 +633,11 @@ sub is_sql_statement {
 
     if ( !$probably_sql && $self->{_prefer_upper_case_keywords} ) {
         return $content
-            =~ m{^ \s* (?: SELECT | INSERT | UPDATE | DELETE ) \b}sx;
+            =~ m{^ \s* (?: SELECT | INSERT | UPDATE | DELETE | ALTER ) \b}sx;
     }
 
-    return $content =~ m{^ \s* (?: SELECT | INSERT | UPDATE | DELETE ) \b}six;
+    return $content
+        =~ m{^ \s* (?: SELECT | INSERT | UPDATE | DELETE | ALTER ) \b}six;
 }
 
 =head2 is_in_safe_context()

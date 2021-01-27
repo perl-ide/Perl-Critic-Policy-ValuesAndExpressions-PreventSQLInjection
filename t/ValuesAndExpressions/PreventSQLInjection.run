@@ -470,3 +470,20 @@ my $heredoc = <<SQL ## SQL safe ($field_name)
 	SELECT ${field_name}
 	FROM table
 SQL
+
+## name Double-quoted SQL string with ALTER statement.
+## failures 1
+## cut
+
+my $sql = "
+ALTER TABLE Customers
+ADD $column varchar(255);
+";
+
+## name Double-quoted SQL string with DELETE statement.
+## failures 1
+## cut
+
+my $sql = "
+DELETE FROM $table
+";
