@@ -654,7 +654,7 @@ sub is_in_safe_context {
 
     my $sprevious_sibling = $token->sprevious_sibling;
 
-    return 0 if !defined $sprevious_sibling or $sprevious_sibling eq '';
+    return 0 if !defined $sprevious_sibling || $sprevious_sibling eq '';
     return 0 if !$sprevious_sibling->isa('PPI::Token::Word');
 
     return $sprevious_sibling->{content} =~ $self->{'_safe_context_regex'};
