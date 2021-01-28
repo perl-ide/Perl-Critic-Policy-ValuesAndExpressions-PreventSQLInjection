@@ -733,7 +733,7 @@ sub analyze_string_injections {
         # Turn ${foo}, @{foo} and %{foo} into $foo, @foo and %foo.
         my @vars;
         for my $var (@variables) {
-            if ( $var =~ m/^(\$|@|%)\{(\w+)\}$/ ) {
+            if ( $var =~ m/^( \$ |@ |% ) \{ \s* ( \w+ ) \s* \}$/x ) {
                 $var = $1 . $2;
             }
             push @vars, $var;

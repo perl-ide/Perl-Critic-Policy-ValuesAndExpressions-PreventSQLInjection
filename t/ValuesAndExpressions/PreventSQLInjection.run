@@ -471,6 +471,15 @@ my $heredoc = <<SQL ## SQL safe ($field_name)
 	FROM table
 SQL
 
+## name Heredoc with bracketed variable with spaces.
+## failures 0
+## cut
+
+my $heredoc = <<SQL ## SQL safe ($field_name)
+	SELECT ${ field_name }
+	FROM table
+SQL
+
 ## name Double-quoted SQL string with ALTER statement.
 ## failures 1
 ## cut
