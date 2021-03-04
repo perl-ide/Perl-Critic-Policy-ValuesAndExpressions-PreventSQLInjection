@@ -1,4 +1,14 @@
 Revision history for Perl-Critic-Policy-ValuesAndExpressions-PreventSQLInjection
+{{$NEXT}}
+        - Added test for heredoc terminators
+          https://github.com/guillaumeaubert/Perl-Critic-Policy-ValuesAndExpressions-PreventSQLInjection/pull/17
+          (Victor Efimov)
+        - Reset `_sqlsafe` when scanning multiple documents; added tests
+          https://github.com/guillaumeaubert/Perl-Critic-Policy-ValuesAndExpressions-PreventSQLInjection/pull/22
+          (Charlie Garrison)
+        - New test cases related to anonymous functions
+          https://github.com/guillaumeaubert/Perl-Critic-Policy-ValuesAndExpressions-PreventSQLInjection/pull/18
+          (Victor Efimov)
 
 v1.4.0  2017-03-22
         - Relicensed under Perl 5 terms.
