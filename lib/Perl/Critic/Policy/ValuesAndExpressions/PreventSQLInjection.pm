@@ -4,27 +4,16 @@ use 5.006001;
 use strict;
 use warnings;
 
+our $VERSION = 'v1.4.0';
+
 use base 'Perl::Critic::Policy';
 
 use Carp qw( croak );
 use Perl::Critic::Utils qw( $TRUE );
-use PPIx::QuoteLike               ();
+use PPIx::QuoteLike 0.015 ();
 use Readonly                      ();
 use String::InterpolatedVariables ();
 use Try::Tiny qw( catch try );
-
-=head1 NAME
-
-Perl::Critic::Policy::ValuesAndExpressions::PreventSQLInjection - Prevent SQL injection in interpolated strings.
-
-
-=head1 VERSION
-
-Version 1.4.0
-
-=cut
-
-our $VERSION = 'v1.4.0';
 
 =head1 AFFILIATION
 
@@ -907,7 +896,7 @@ sub parse_config_parameters {
 =head1 BUGS
 
 Please report any bugs or feature requests through the web interface at
-L<https://github.com/guillaumeaubert/Perl-Critic-Policy-ValuesAndExpressions-PreventSQLInjection/issues>.
+L<https://github.com/oalders/Perl-Critic-Policy-ValuesAndExpressions-PreventSQLInjection/issues>.
 I will be notified, and then you'll automatically be notified of progress on
 your bug as I make changes.
 
@@ -925,7 +914,7 @@ You can also look for information at:
 
 =item * GitHub (report bugs there)
 
-L<https://github.com/guillaumeaubert/Perl-Critic-Policy-ValuesAndExpressions-PreventSQLInjection/issues>
+L<https://github.com/oalders/Perl-Critic-Policy-ValuesAndExpressions-PreventSQLInjection/issues>
 
 =item * CPAN Ratings
 
@@ -936,24 +925,6 @@ L<http://cpanratings.perl.org/d/Perl-Critic-Policy-ValuesAndExpressions-PreventS
 L<https://metacpan.org/release/Perl-Critic-Policy-ValuesAndExpressions-PreventSQLInjection>
 
 =back
-
-
-=head1 AUTHOR
-
-L<Guillaume Aubert|https://metacpan.org/author/AUBERTG>,
-C<< <aubertg at cpan.org> >>.
-
-
-=head1 COPYRIGHT & LICENSE
-
-Copyright 2013-2017 Guillaume Aubert.
-
-This code is free software; you can redistribute it and/or modify it under the
-same terms as Perl 5 itself.
-
-This program is distributed in the hope that it will be useful, but WITHOUT ANY
-WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
-PARTICULAR PURPOSE. See the LICENSE file for more details.
 
 =cut
 
