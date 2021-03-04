@@ -88,16 +88,16 @@
    "release_status" : "stable",
    "resources" : {
       "bugtracker" : {
-         "web" : "https://github.com/guillaumeaubert/Perl-Critic-Policy-ValuesAndExpressions-PreventSQLInjection/issues"
+         "web" : "https://github.com/oalders/Perl-Critic-Policy-ValuesAndExpressions-PreventSQLInjection/issues"
       },
-      "homepage" : "https://github.com/guillaumeaubert/Perl-Critic-Policy-ValuesAndExpressions-PreventSQLInjection",
+      "homepage" : "https://github.com/oalders/Perl-Critic-Policy-ValuesAndExpressions-PreventSQLInjection",
       "repository" : {
          "type" : "git",
-         "url" : "https://github.com/guillaumeaubert/Perl-Critic-Policy-ValuesAndExpressions-PreventSQLInjection.git",
-         "web" : "https://github.com/guillaumeaubert/Perl-Critic-Policy-ValuesAndExpressions-PreventSQLInjection"
+         "url" : "https://github.com/oalders/Perl-Critic-Policy-ValuesAndExpressions-PreventSQLInjection.git",
+         "web" : "https://github.com/oalders/Perl-Critic-Policy-ValuesAndExpressions-PreventSQLInjection"
       }
    },
-   "version" : "v1.4.0",
+   "version" : "2.000000",
    "x_Dist_Zilla" : {
       "perl" : {
          "version" : "5.030002"
@@ -655,7 +655,7 @@
                   "branch" : null,
                   "changelog" : "Changes",
                   "signed" : 0,
-                  "tag" : "v1.4.0",
+                  "tag" : "v2.000000",
                   "tag_format" : "v%V",
                   "tag_message" : "v%V"
                },

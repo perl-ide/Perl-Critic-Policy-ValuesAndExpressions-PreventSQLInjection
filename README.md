@@ -4,7 +4,7 @@ Perl::Critic::Policy::ValuesAndExpressions::PreventSQLInjection - Prevent SQL in
 
 # VERSION
 
-version v1.4.0
+version 2.000000
 
 # DESCRIPTION
 
@@ -297,7 +297,7 @@ there.
 # BUGS
 
 Please report any bugs or feature requests through the web interface at
-[https://github.com/guillaumeaubert/Perl-Critic-Policy-ValuesAndExpressions-PreventSQLInjection/issues](https://github.com/guillaumeaubert/Perl-Critic-Policy-ValuesAndExpressions-PreventSQLInjection/issues).
+[https://github.com/oalders/Perl-Critic-Policy-ValuesAndExpressions-PreventSQLInjection/issues](https://github.com/oalders/Perl-Critic-Policy-ValuesAndExpressions-PreventSQLInjection/issues).
 I will be notified, and then you'll automatically be notified of progress on
 your bug as I make changes.
 
@@ -320,11 +320,6 @@ You can also look for information at:
 - MetaCPAN
 
     [https://metacpan.org/release/Perl-Critic-Policy-ValuesAndExpressions-PreventSQLInjection](https://metacpan.org/release/Perl-Critic-Policy-ValuesAndExpressions-PreventSQLInjection)
-
-# AUTHOR
-
-[Guillaume Aubert](https://metacpan.org/author/AUBERTG),
-`<aubertg at cpan.org>`.
 
 # AUTHOR
 
