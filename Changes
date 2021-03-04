@@ -1,4 +1,6 @@
 Revision history for Perl-Critic-Policy-ValuesAndExpressions-PreventSQLInjection
+{{$NEXT}}
+
 2.000000  2021-03-04 22:59:36Z
         - Added test for heredoc terminators
           https://github.com/guillaumeaubert/Perl-Critic-Policy-ValuesAndExpressions-PreventSQLInjection/pull/17

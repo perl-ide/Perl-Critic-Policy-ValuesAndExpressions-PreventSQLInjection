@@ -4,7 +4,7 @@ use 5.006001;
 use strict;
 use warnings;
 
-our $VERSION = 'v1.4.0';
+our $VERSION = '2.000001';
 
 use base 'Perl::Critic::Policy';
 
