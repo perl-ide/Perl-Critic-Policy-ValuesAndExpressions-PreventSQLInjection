@@ -4,7 +4,7 @@ Perl::Critic::Policy::ValuesAndExpressions::PreventSQLInjection - Prevent SQL in
 
 # VERSION
 
-version v1.4.1
+version v1.4.0
 
 # DESCRIPTION
 
@@ -21,10 +21,6 @@ In other words, this policy searches for code such as:
 But would leave alone:
 
     my $string = "Hello $world";
-
-# NAME
-
-Perl::Critic::Policy::ValuesAndExpressions::PreventSQLInjection - Prevent SQL injection in interpolated strings.
 
 # AFFILIATION
 
@@ -185,7 +181,7 @@ Return an array with information about the parameters supported.
 
 ## default\_severity()
 
-Return the default severify for this policy.
+Return the default severity for this policy.
 
     my $default_severity = $policy->default_severity();
 
@@ -315,11 +311,7 @@ You can also look for information at:
 
 - GitHub (report bugs there)
 
-    [https://github.com/guillaumeaubert/Perl-Critic-Policy-ValuesAndExpressions-PreventSQLInjection/issues](https://github.com/guillaumeaubert/Perl-Critic-Policy-ValuesAndExpressions-PreventSQLInjection/issues)
-
-- AnnoCPAN: Annotated CPAN documentation
-
-    [http://annocpan.org/dist/Perl-Critic-Policy-ValuesAndExpressions-PreventSQLInjection](http://annocpan.org/dist/Perl-Critic-Policy-ValuesAndExpressions-PreventSQLInjection)
+    [https://github.com/oalders/Perl-Critic-Policy-ValuesAndExpressions-PreventSQLInjection/issues](https://github.com/oalders/Perl-Critic-Policy-ValuesAndExpressions-PreventSQLInjection/issues)
 
 - CPAN Ratings
 
@@ -334,20 +326,9 @@ You can also look for information at:
 [Guillaume Aubert](https://metacpan.org/author/AUBERTG),
 `<aubertg at cpan.org>`.
 
-# COPYRIGHT & LICENSE
-
-Copyright 2013-2017 Guillaume Aubert.
-
-This code is free software; you can redistribute it and/or modify it under the
-same terms as Perl 5 itself.
-
-This program is distributed in the hope that it will be useful, but WITHOUT ANY
-WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
-PARTICULAR PURPOSE. See the LICENSE file for more details.
-
 # AUTHOR
 
-"Guillaume Aubert <aubertg@cpan.org>
+"Guillaume Aubert &lt;aubertg at cpan.org>"
 
 # COPYRIGHT AND LICENSE
 

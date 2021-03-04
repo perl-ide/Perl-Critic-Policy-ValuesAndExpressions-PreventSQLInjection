@@ -8,7 +8,7 @@ use ExtUtils::MakeMaker;
 
 my %WriteMakefileArgs = (
   "ABSTRACT" => "Prevent SQL injection in interpolated strings.",
-  "AUTHOR" => "\"Guillaume Aubert <aubertg\@cpan.org>",
+  "AUTHOR" => "\"Guillaume Aubert <aubertg at cpan.org>\"",
   "CONFIGURE_REQUIRES" => {
     "ExtUtils::MakeMaker" => 0
   },
@@ -18,6 +18,7 @@ my %WriteMakefileArgs = (
   "NAME" => "Perl::Critic::Policy::ValuesAndExpressions::PreventSQLInjection",
   "PREREQ_PM" => {
     "Carp" => 0,
+    "PPIx::QuoteLike" => "0.015",
     "Perl::Critic::Policy" => 0,
     "Perl::Critic::Utils" => 0,
     "Readonly" => 0,
@@ -36,7 +37,7 @@ my %WriteMakefileArgs = (
     "Test::Perl::Critic" => 0,
     "Test::Perl::Critic::Policy" => 0
   },
-  "VERSION" => "v1.4.1",
+  "VERSION" => "v1.4.0",
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -48,6 +49,7 @@ my %FallbackPrereqs = (
   "ExtUtils::MakeMaker" => 0,
   "File::Spec" => 0,
   "PPI" => 0,
+  "PPIx::QuoteLike" => "0.015",
   "Perl::Critic::Policy" => 0,
   "Perl::Critic::Utils" => 0,
   "Readonly" => 0,
