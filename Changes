@@ -9,6 +9,8 @@ Revision history for Perl-Critic-Policy-ValuesAndExpressions-PreventSQLInjection
         - New test cases related to anonymous functions
           https://github.com/guillaumeaubert/Perl-Critic-Policy-ValuesAndExpressions-PreventSQLInjection/pull/18
           (Victor Efimov)
+        - Added a new "prefer_upper_case_keywords" configuration option (Olaf Alders)
+        - Added detection for ALTER, CREATE and DROP statements.
 
 v1.4.0  2017-03-22
         - Relicensed under Perl 5 terms.
