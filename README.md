@@ -4,7 +4,7 @@ Perl::Critic::Policy::ValuesAndExpressions::PreventSQLInjection - Prevent SQL in
 
 # VERSION
 
-version 2.000000
+version 2.000001
 
 # DESCRIPTION
 
