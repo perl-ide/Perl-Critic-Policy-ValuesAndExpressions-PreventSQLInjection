@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 
-use PPI;
+use PPI ();
 use Test::FailWarnings -allow_deps => 1;
 use Test::More;
 use Test::Perl::Critic::Policy qw( all_policies_ok );
@@ -21,3 +21,5 @@ if ( ( $PPI::VERSION > 1.215 ) && ( $] < 5.014 ) ) {
 all_policies_ok(
     -policies => ['PreventSQLInjection'],
 );
+
+done_testing();
