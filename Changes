@@ -1,4 +1,6 @@
 Revision history for Perl-Critic-Policy-ValuesAndExpressions-PreventSQLInjection
+{{$NEXT}}
+
 2.000001  2021-03-05 15:39:11Z
         - Bump minimum PPI version to 1.222  (GH#1) (Olaf Alders)
 
