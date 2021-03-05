@@ -1,5 +1,6 @@
 Revision history for Perl-Critic-Policy-ValuesAndExpressions-PreventSQLInjection
 {{$NEXT}}
+        - Bump minimum PPI version to 1.222  (GH#1) (Olaf Alders)
 
 2.000000  2021-03-04 22:59:36Z
         - Added test for heredoc terminators
