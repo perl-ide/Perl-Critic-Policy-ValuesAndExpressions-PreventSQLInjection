@@ -593,6 +593,10 @@ sub get_complete_variable {
             $is_quoted = 1;
             last;
         }
+        elsif ($sibling->isa('PPI::Token::Word')
+            && $sibling->method_call()
+            # allow for stacking method calls, e.g. $foo->bar->baz->dbh->quote
+            $variable .= $sibling->content();
         else {
             last;
         }
