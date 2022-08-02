@@ -452,6 +452,12 @@ $sql = "UPDATE table_name SET field = " . $dbh->test($value) . "WHERE field = 1"
 
 $sql = "UPDATE table_name SET field = " . $dbh->test($value) . "WHERE field = " . $dbh->quote($value2);
 
+## name Allow stacked calls prior to quoting method
+## parms { quoting_methods => 'test' }
+## failures 0
+## cut
+
+$sql = "UPDATE table_name SET field = " . $foo->bar->baz->dbh->test($value) . "WHERE field = 1";
 
 ## name vars in subtest name.
 ## parms { prefer_upper_case_keywords => 0 }
