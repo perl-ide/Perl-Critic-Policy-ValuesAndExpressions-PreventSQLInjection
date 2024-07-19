@@ -215,6 +215,11 @@ Readonly::Scalar my $QUOTING_METHODS_DEFAULT => q|
 Readonly::Scalar my $SAFE_FUNCTIONS_DEFAULT => q|
 |;
 
+# Default for the name of the variables that are safe to
+# concatenate to SQL strings.
+Readonly::Scalar my $SAFE_VARIABLES_DEFAULT => q|
+|;
+
 # Default for the name of the functions that are generally safe to use (because they
 # are not expected to generate SQL calls -- unless you are doing something really,
 # really weird.)
@@ -280,6 +285,13 @@ sub supported_parameters {
                 'Match on SELECT, UPDATE, INSERT, DELETE but not on their lower or mixed case variants',
             default_string => '0',
             behavior       => 'boolean',
+        },
+        {
+            name        => 'safe_variables',
+            description =>
+                'A space-separated string listing the variables that are a safely quoted value',
+            default_string => $SAFE_VARIABLES_DEFAULT,
+            behavior       => 'string',
         },
     );
 }
@@ -791,10 +803,13 @@ sub get_safe_elements {
 
     # If there's nothing in the cache for that line, return immediately.
     return {}
-        if !exists( $self->{'_sqlsafe'}->{$line_number} );
+        if !exists( $self->{'_sqlsafe'}->{$line_number} ) &&  !exists( $self->{_safe_variables});
 
     # Return a hash of safe element names.
-    return { map { $_ => 1 } @{ $self->{'_sqlsafe'}->{$line_number} } };
+    my %hash =  map { $_ => 1 } @{ $self->{'_sqlsafe'}->{$line_number} };
+        # Return a hash of safe element names.
+    map {$hash{$_} = 1 } split( /[,\s]+/, $self->{'_safe_variables'} );
+    return \%hash;
 }
 
 =head2 parse_comments()
@@ -889,7 +904,11 @@ sub parse_config_parameters {
             $self->{'_safe_context_regex'} = undef;
         }
     }
-
+    # Strip surrounding quotes.
+    if ( exists( $self->{'_safe_variables'} ) ) {
+        $self->{'_safe_variables'} =~ s/^['" ]+//;
+        $self->{'_safe_variables'} =~ s/['" ]+$//;
+    }
     return;
 }
 

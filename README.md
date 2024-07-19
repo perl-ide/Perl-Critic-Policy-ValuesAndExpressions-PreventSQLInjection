@@ -4,7 +4,7 @@ Perl::Critic::Policy::ValuesAndExpressions::PreventSQLInjection - Prevent SQL in
 
 # VERSION
 
-version 2.000001
+version 2.000002
 
 # DESCRIPTION
 
@@ -61,6 +61,12 @@ For example, to declare `quote_function()` and
     safe_functions = 'quote_function My::Package::quote_external_function'
 
 By default, no functions are considered safe.
+
+
+## safe_variables
+
+A space separated string of variables we know are safe.
+
 
 ## prefer\_upper\_case\_keywords
 
